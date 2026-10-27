@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "vPOhLWqzwwI=",
+  "dgSpecHash": "pGTGKx/+Gnk=",
   "success": true,
   "projectFilePath": "C:\\Users\\LCBitcube\\ToolShare\\ToolShare.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\LCBitcube\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
-    "C:\\Users\\LCBitcube\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.1.1\\fluentvalidation.dependencyinjectionextensions.12.1.1.nupkg.sha512",
+    "C:\\Users\\LCBitcube\\.nuget\\packages\\fluentvalidation\\12.2.0\\fluentvalidation.12.2.0.nupkg.sha512",
+    "C:\\Users\\LCBitcube\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\12.2.0\\fluentvalidation.dependencyinjectionextensions.12.2.0.nupkg.sha512",
     "C:\\Users\\LCBitcube\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.12\\microsoft.aspnetcore.openapi.10.0.12.nupkg.sha512",
     "C:\\Users\\LCBitcube\\.nuget\\packages\\microsoft.openapi\\2.12.0\\microsoft.openapi.2.12.0.nupkg.sha512"
   ],

@@ -6,5 +6,5 @@ namespace ToolShare.Mapping;
 public static class MemberMapping
 {
     public static MemberResponse ToResponse(this Member member)
-        => new(member.Id, member.Name, member.Email);
+        => new(member.Id, member.FullName, member.Email);
 }

@@ -3,7 +3,7 @@ namespace ToolShare.Domain;
 public class Tool
 {
     public Guid Id { get; }
-    public string FullName { get; private set; }
+    public string Name { get; private set; }
     public string Category { get; private set; }
     public Guid OwnerId { get; }
 
@@ -19,7 +19,7 @@ public class Tool
     {
         if (string.IsNullOrWhiteSpace(name))
             throw new ArgumentException("Tool name is required.", nameof(name));
-        FullName = name.Trim();
+        Name = name.Trim();
     }
 
     private void SetCategory(string category)
