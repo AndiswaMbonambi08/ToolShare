@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using FluentValidation;
 using ToolShare.Data;
 using ToolShare.Domain;
@@ -11,6 +12,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<ToolShareExceptionHandler>();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.ConfigureHttpJsonOptions(o => o.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 builder.Services.AddSingleton<IRepository<Member>, InMemoryMemberRepository>();
 builder.Services.AddSingleton<IRepository<Tool>, InMemoryToolRepository>();
@@ -18,6 +20,7 @@ builder.Services.AddSingleton<ILoanRepository, InMemoryLoanRepository>();
 builder.Services.AddSingleton<IRepository<Loan>>(sp => sp.GetRequiredService<ILoanRepository>());
 builder.Services.AddSingleton<IIdempotencyStore, InMemoryIdempotencyStore>();
 builder.Services.AddSingleton<ILoanService, LoanService>();
+builder.Services.AddHostedService<DataSeeder>();
 
 var app = builder.Build();
 
@@ -31,20 +34,6 @@ if (app.Environment.IsDevelopment())
 app.MapMemberEndpoints();
 app.MapToolEndpoints();
 app.MapLoanEndpoints();
-
-using (var scope = app.Services.CreateScope())
-{
-    var memberRepo = scope.ServiceProvider.GetRequiredService<IRepository<Member>>();
-    var toolRepo = scope.ServiceProvider.GetRequiredService<IRepository<Tool>>();
-
-    var thabo = new Member("Thabo Nkosi", "thabo@example.com");
-    var lerato = new Member("Lerato Dube", "lerato@example.com");
-    await memberRepo.AddAsync(thabo);
-    await memberRepo.AddAsync(lerato);
-
-    await toolRepo.AddAsync(new Tool("Drill", "Power Tools", thabo.Id));
-    await toolRepo.AddAsync(new Tool("Ladder", "General", lerato.Id));
-}
 
 app.Run();
 
