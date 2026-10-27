@@ -1,5 +1,5 @@
 using ToolShare.Domain;
 
-namespace ToolShare.DTOS;
+namespace ToolShare.Dtos;
 
 public record LoanResponse(Guid Id, Guid ToolId, Guid BorrowerId, DateTime CheckedOutDate, DateTime DueDate, LoanStatus Status);

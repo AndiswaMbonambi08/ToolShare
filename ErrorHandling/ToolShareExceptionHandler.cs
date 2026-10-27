@@ -26,8 +26,16 @@ public class ToolShareExceptionHandler : IExceptionHandler
             ? "An unexpected error occurred."
             : exception.Message;
 
-        _logger.LogError(exception, "Request failed. Method: {Method}, Path: {Path}, StatusCode: {StatusCode}",
-            httpContext.Request.Method, httpContext.Request.Path, statusCode);
+        if (statusCode >= StatusCodes.Status500InternalServerError)
+        {
+            _logger.LogError(exception, "Unhandled error. Method: {Method}, Path: {Path}, StatusCode: {StatusCode}",
+                httpContext.Request.Method, httpContext.Request.Path, statusCode);
+        }
+        else
+        {
+            _logger.LogInformation("Request rejected. Method: {Method}, Path: {Path}, StatusCode: {StatusCode}, Reason: {Reason}",
+                httpContext.Request.Method, httpContext.Request.Path, statusCode, exception.Message);
+        }
 
         var problemDetails = new ProblemDetails { Status = statusCode, Title = title, Detail = detail };
 

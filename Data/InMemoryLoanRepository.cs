@@ -19,6 +19,12 @@ public class InMemoryLoanRepository : ILoanRepository
         return Task.CompletedTask;
     }
 
+    public Task UpdateAsync(Loan loan)
+    {
+        _loans[loan.Id] = loan;
+        return Task.CompletedTask;
+    }
+
     public Task DeleteAsync(Guid id)
     {
         _loans.TryRemove(id, out _);

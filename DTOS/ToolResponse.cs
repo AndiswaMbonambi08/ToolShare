@@ -1,3 +1,3 @@
-namespace ToolShare.DTOS;
+namespace ToolShare.Dtos;
 
-public record ToolResponse(Guid Id, string FullName, string Category, Guid OwnerId);
+public record ToolResponse(Guid Id, string Name, string Category, Guid OwnerId);

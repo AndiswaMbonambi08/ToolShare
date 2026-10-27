@@ -1,6 +1,6 @@
 namespace ToolShare.Domain.Exceptions;
 
-public class ToolShareException : Exception
+public abstract class ToolShareException : Exception
 {
         public abstract int StatusCode { get; }
         public abstract string Title { get; }
@@ -16,12 +16,12 @@ public class RequestValidationException : ToolShareException
     public RequestValidationException(string message) : base(message) { }
 }
     
-public class MemberNotFoundException : ToolShareException
+public class NotFoundException : ToolShareException
 {
     public override int StatusCode => 404;
-    public override string Title => "Member Not Found";
+    public override string Title => "Not Found";
 
-    public MemberNotFoundException(string message) : base(message) { }
+    public NotFoundException(string message) : base(message) { }
 }
 
 public class ConflictException : ToolShareException

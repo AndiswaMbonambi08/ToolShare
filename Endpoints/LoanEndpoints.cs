@@ -52,10 +52,9 @@ public static class LoanEndpoints
             return Results.NoContent();
         });
 
-        group.MapDelete("/{id:guid}", async (Guid id, IRepository<ToolShare.Domain.Loan> repo) =>
+        group.MapDelete("/{id:guid}", async (Guid id, ILoanService service) =>
         {
-            var loan = await repo.GetByIdAsync(id) ?? throw new NotFoundException("Loan not found.");
-            await repo.DeleteAsync(id);
+            await service.DeleteAsync(id);
             return Results.NoContent();
         });
     }
