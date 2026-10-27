@@ -7,19 +7,19 @@ public class Tool
     public string Category { get; private set; }
     public Guid OwnerId { get; }
 
-    public Tool(string fullName, string category, Guid ownerId)
+    public Tool(string name, string category, Guid ownerId)
     {
         Id = Guid.NewGuid();
         OwnerId = ownerId;
-        SetFullName(fullName);
+        SetName(name);
         SetCategory(category);
     }
 
-    private void SetFullName(string fullName)
+    private void SetName(string name)
     {
-        if (string.IsNullOrWhiteSpace(fullName))
-            throw new ArgumentException("Tool name is required.", nameof(fullName));
-        FullName = fullName.Trim();
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Tool name is required.", nameof(name));
+        FullName = name.Trim();
     }
 
     private void SetCategory(string category)

@@ -1,0 +1,8 @@
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.csproj.AssemblyReference.cache
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.AssemblyInfoInputs.cache
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.AssemblyInfo.cs
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.csproj.CoreCompileInputs.cache
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\LCBitcube\ToolShare\obj\Debug\net10.0\ToolShare.sourcelink.json
