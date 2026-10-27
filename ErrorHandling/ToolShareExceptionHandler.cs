@@ -18,6 +18,7 @@ public class ToolShareExceptionHandler : IExceptionHandler
         var (statusCode, title) = exception switch
         {
             ToolShareException tse => (tse.StatusCode, tse.Title),
+            BadHttpRequestException bre => (bre.StatusCode, "Bad Request"),
             ArgumentException => (StatusCodes.Status400BadRequest, "Bad Request"),
             _ => (StatusCodes.Status500InternalServerError, "Internal Server Error")
         };
@@ -38,6 +39,9 @@ public class ToolShareExceptionHandler : IExceptionHandler
         }
 
         var problemDetails = new ProblemDetails { Status = statusCode, Title = title, Detail = detail };
+
+        if (exception is RequestValidationException { Errors: not null } validation)
+            problemDetails.Extensions["errors"] = validation.Errors;
 
         httpContext.Response.StatusCode = statusCode;
         await httpContext.Response.WriteAsJsonAsync(problemDetails, options: (System.Text.Json.JsonSerializerOptions?)null, contentType: "application/problem+json", cancellationToken);

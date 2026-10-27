@@ -3,12 +3,12 @@ namespace ToolShare.Domain;
 public class Member
 {
     public Guid Id { get; }
-    public string FullName { get; private set; }
-    public string Email { get; private set; }
+    public string FullName { get; private set; } = null!;
+    public string Email { get; private set; } = null!;
 
-    public Member(string fullName, string email)
+    public Member(string fullName, string email, Guid? id = null)
     {
-        Id = Guid.NewGuid();
+        Id = id ?? Guid.NewGuid();
         SetFullName(fullName);
         SetEmail(email);
     }

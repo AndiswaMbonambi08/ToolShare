@@ -3,13 +3,13 @@ namespace ToolShare.Domain;
 public class Tool
 {
     public Guid Id { get; }
-    public string Name { get; private set; }
-    public string Category { get; private set; }
+    public string Name { get; private set; } = null!;
+    public string Category { get; private set; } = null!;
     public Guid OwnerId { get; }
 
-    public Tool(string name, string category, Guid ownerId)
+    public Tool(string name, string category, Guid ownerId, Guid? id = null)
     {
-        Id = Guid.NewGuid();
+        Id = id ?? Guid.NewGuid();
         OwnerId = ownerId;
         SetName(name);
         SetCategory(category);
